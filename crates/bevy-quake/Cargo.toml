@@ -1,0 +1,17 @@
+[package]
+name = "bevy-quake"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+data = { path = "../data" }
+game = { path = "../game" }
+render = { path = "../render" }
+light = { path = "../light" }
+sound = { path = "../sound" }
+rayon = "1.12"
+glam = "0.33"
+# the window, the input and the frame's loop are Bevy's (row 41); its features are `render`'s
+bevy = { version = "0.20", default-features = false }

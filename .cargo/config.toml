@@ -1,0 +1,4 @@
+# rust-gpu keeps the shader compiler it builds under the cache directory; that
+# directory is put inside this project, so nothing of it lands in the home.
+[env]
+XDG_CACHE_HOME = { value = "cache", relative = true }

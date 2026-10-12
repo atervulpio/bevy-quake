@@ -1,0 +1,44 @@
+[package]
+name = "render"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+shaders = { path = "../shaders" }
+data = { path = "../data" }
+letters = { path = "../letters" }
+light = { path = "../light" }
+glam = { version = "0.33", features = ["bytemuck"] }
+bytemuck = { version = "1", features = ["derive"] }
+# Bevy draws (row 41): its window, its input, its renderer, its lights and shadows. Only what is
+# drawn is taken: no Bevy sound (the game's own is `crates/sound`), no UI, no scenes, no glTF.
+# Our programs for the card come to it as SPIR-V from rust-gpu (`shader_format_spirv`), read by
+# wgpu's own translator as Bevy reads its own programs.
+bevy = { version = "0.20", default-features = false, features = [
+    "std",
+    "multi_threaded",
+    "async_executor",
+    "bevy_asset",
+    "bevy_log",
+    "bevy_winit",
+    "wayland",
+    "x11",
+    "bevy_window",
+    "bevy_render",
+    "bevy_core_pipeline",
+    "bevy_pbr",
+    "bevy_light",
+    "bevy_camera",
+    "bevy_color",
+    "bevy_image",
+    "bevy_mesh",
+    "bevy_shader",
+    "bevy_material",
+    "png",
+    "shader_format_spirv",
+] }
+
+[build-dependencies]
+cargo-gpu-install = "0.10.0"

@@ -1,0 +1,8 @@
+# Somebody else's source and the game's data, fetched again as README.md says
+foreign/
+# Build output
+target/
+# What the game computes from the data (light) and may compute again
+cache/
+# The copy published on GitHub, made from this folder
+public/
