@@ -11,9 +11,10 @@ crate-type = ["lib"]
 [dependencies]
 spirv-std = "0.10.0"
 
-# The host reads the shared structures as bytes; the card needs no such thing.
+# The host reads the shared structures as bytes, glam's vectors in them; the card needs no such thing.
 [target.'cfg(not(target_arch = "spirv"))'.dependencies]
 bytemuck = { version = "1", features = ["derive"] }
+glam = { version = "0.33", default-features = false, features = ["bytemuck"] }
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_arch, values("spirv"))'] }
